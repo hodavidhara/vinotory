@@ -1,4 +1,4 @@
-package com.harataira.crazyandroidapp.model;
+package com.harataira.vinotory.model;
 
 /**
  * The model representing a wine bottle.
