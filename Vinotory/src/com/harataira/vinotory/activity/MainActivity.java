@@ -1,4 +1,4 @@
-package com.harataira.crazyandroidapp;
+package com.harataira.vinotory.activity;
 
 import android.os.Bundle;
 import android.app.Activity;
