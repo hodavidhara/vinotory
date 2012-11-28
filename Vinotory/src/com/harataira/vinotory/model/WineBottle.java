@@ -5,25 +5,32 @@ package com.harataira.vinotory.model;
  */
 public class WineBottle {
 
+	private int id;
 	private String vineyard;
 	private int year;
 	// TODO: Make this an enum?
 	private String type;
-	// TODO: maybe this should just be a photo? What type is it? Learn more
-	// about android camera integration
-	private String pathToPhoto;
 	private String comment;
+	// TODO: How do we add a photo? What type is it? Learn more
+	// about android camera integration
 
 	public WineBottle() {
 	}
 
-	public WineBottle(String vineyard, int year, String type,
-			String pathToPhoto, String comment) {
+	public WineBottle(int id, String vineyard, int year, String type, String comment) {
+		this.id = id;
 		this.vineyard = vineyard;
 		this.year = year;
 		this.type = type;
-		this.pathToPhoto = pathToPhoto;
 		this.comment = comment;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getVineyard() {
@@ -50,14 +57,6 @@ public class WineBottle {
 		this.type = type;
 	}
 
-	public String getPathToPhoto() {
-		return pathToPhoto;
-	}
-
-	public void setPathToPhoto(String pathToPhoto) {
-		this.pathToPhoto = pathToPhoto;
-	}
-
 	public String getComment() {
 		return comment;
 	}
@@ -66,4 +65,47 @@ public class WineBottle {
 		this.comment = comment;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((comment == null) ? 0 : comment.hashCode());
+		result = prime * result + id;
+		result = prime * result + ((type == null) ? 0 : type.hashCode());
+		result = prime * result
+				+ ((vineyard == null) ? 0 : vineyard.hashCode());
+		result = prime * result + year;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		WineBottle other = (WineBottle) obj;
+		if (comment == null) {
+			if (other.comment != null)
+				return false;
+		} else if (!comment.equals(other.comment))
+			return false;
+		if (id != other.id)
+			return false;
+		if (type == null) {
+			if (other.type != null)
+				return false;
+		} else if (!type.equals(other.type))
+			return false;
+		if (vineyard == null) {
+			if (other.vineyard != null)
+				return false;
+		} else if (!vineyard.equals(other.vineyard))
+			return false;
+		if (year != other.year)
+			return false;
+		return true;
+	}
 }
