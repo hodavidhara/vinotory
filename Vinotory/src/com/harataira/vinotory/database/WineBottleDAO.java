@@ -1,5 +1,8 @@
 package com.harataira.vinotory.database;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -40,6 +43,35 @@ public class WineBottleDAO {
     }
 
     /**
+     * Get a list of all wine bottles in the database.
+     * 
+     * @return a list of wine bottles.
+     */
+    public List<WineBottle> readAllWineBottles() {
+        SQLiteDatabase db = databaseHelper.getReadableDatabase();
+        
+        List<WineBottle> wineBottleList = new ArrayList<WineBottle>();
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + DatabaseHelper.TABLE_WINE_BOTTLE;
+     
+        Cursor cursor = db.rawQuery(selectQuery, null);
+     
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                WineBottle wineBottle = new WineBottle(Integer.parseInt(cursor
+                        .getString(0)), cursor.getString(1), Integer.parseInt(cursor
+                        .getString(2)), cursor.getString(3), cursor.getString(4));
+                // Adding contact to list
+                wineBottleList.add(wineBottle);
+            } while (cursor.moveToNext());
+        }
+     
+        // return contact list
+        return wineBottleList;
+    }
+    
+    /**
      * Gets a row from the WINE_BOTTLE table by id.
      * 
      * @param id
@@ -66,7 +98,7 @@ public class WineBottleDAO {
         // return contact
         return wineBottle;
     }
-
+    
     // TODO:
     public void updateWineBottle(WineBottle wineBottle) {
         throw new UnsupportedOperationException();
