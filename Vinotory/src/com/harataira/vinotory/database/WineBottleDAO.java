@@ -119,7 +119,7 @@ public class WineBottleDAO {
     // deleting single contact
     public void deleteWineBottle(WineBottle wineBottle) {
         SQLiteDatabase db = databaseHelper.getReadableDatabase();
-        db.delete(DatabaseHelper.TABLE_WINE_BOTTLE, values, DatabaseHelper.KEY_WINE_BOTTLE_ID + " = ?",
+        db.delete(DatabaseHelper.TABLE_WINE_BOTTLE, DatabaseHelper.KEY_WINE_BOTTLE_ID + " = ?",
         		new String[] { String.valueOf(wineBottle.getId()) });
         db.close();
     }
