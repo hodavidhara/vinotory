@@ -99,13 +99,28 @@ public class WineBottleDAO {
         return wineBottle;
     }
     
-    // TODO:
+    // updating single contact
     public void updateWineBottle(WineBottle wineBottle) {
-        throw new UnsupportedOperationException();
+    	SQLiteDatabase db = databaseHelper.getWritableDatabase();
+    		
+    	ContentValues values = new ContentValues();
+    	values.put(DatabaseHelper.KEY_WINE_BOTTLE_VINEYARD,
+                wineBottle.getVineyard());
+        values.put(DatabaseHelper.KEY_WINE_BOTTLE_YEAR, wineBottle.getYear());
+        values.put(DatabaseHelper.KEY_WINE_BOTTLE_TYPE, wineBottle.getType());
+        values.put(DatabaseHelper.KEY_WINE_BOTTLE_COMMENT,
+                wineBottle.getComment());
+    	
+    	// updating row NOT SURE here void method cannot return a value should i take out the return?
+    	return db.update(DatabaseHelper.TABLE_WINE_BOTTLE, values, DatabaseHelper.KEY_WINE_BOTTLE_ID + " = ?",
+    			new String[] { String.valueOf(wineBottle.getId()) });
     }
 
-    // TODO:
+    // deleting single contact
     public void deleteWineBottle(WineBottle wineBottle) {
-        throw new UnsupportedOperationException();
+        SQLiteDatabase db = databaseHelper.getReadableDatabase();
+        db.delete(DatabaseHelper.TABLE_WINE_BOTTLE, values, DatabaseHelper.KEY_WINE_BOTTLE_ID + " = ?",
+        		new String[] { String.valueOf(wineBottle.getId()) });
+        db.close();
     }
 }
