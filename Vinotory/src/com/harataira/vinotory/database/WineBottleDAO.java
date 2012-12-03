@@ -34,6 +34,7 @@ public class WineBottleDAO {
                 wineBottle.getVineyard());
         values.put(DatabaseHelper.KEY_WINE_BOTTLE_YEAR, wineBottle.getYear());
         values.put(DatabaseHelper.KEY_WINE_BOTTLE_TYPE, wineBottle.getType());
+        values.put(DatabaseHelper.KEY_WINE_BOTTLE_QUANTITY, wineBottle.getQuantity());
         values.put(DatabaseHelper.KEY_WINE_BOTTLE_COMMENT,
                 wineBottle.getComment());
 
@@ -61,7 +62,8 @@ public class WineBottleDAO {
             do {
                 WineBottle wineBottle = new WineBottle(Integer.parseInt(cursor
                         .getString(0)), cursor.getString(1), Integer.parseInt(cursor
-                        .getString(2)), cursor.getString(3), cursor.getString(4));
+                        .getString(2)), cursor.getString(3), Integer.parseInt(cursor
+                        .getString(4)), cursor.getString(5));
                 // Adding contact to list
                 wineBottleList.add(wineBottle);
             } while (cursor.moveToNext());
@@ -94,24 +96,23 @@ public class WineBottleDAO {
 
         WineBottle wineBottle = new WineBottle(Integer.parseInt(cursor
                 .getString(0)), cursor.getString(1), Integer.parseInt(cursor
-                .getString(2)), cursor.getString(3), cursor.getString(4));
+                .getString(2)), cursor.getString(3), Integer.parseInt(cursor
+                .getString(4)), cursor.getString(5));
         // return contact
         return wineBottle;
     }
     
     // updating single contact
-    public void updateWineBottle(WineBottle wineBottle) {
+    public int updateWineBottle(WineBottle wineBottle) {
     	SQLiteDatabase db = databaseHelper.getWritableDatabase();
     		
     	ContentValues values = new ContentValues();
-    	values.put(DatabaseHelper.KEY_WINE_BOTTLE_VINEYARD,
-                wineBottle.getVineyard());
+    	values.put(DatabaseHelper.KEY_WINE_BOTTLE_VINEYARD, wineBottle.getVineyard());
         values.put(DatabaseHelper.KEY_WINE_BOTTLE_YEAR, wineBottle.getYear());
         values.put(DatabaseHelper.KEY_WINE_BOTTLE_TYPE, wineBottle.getType());
-        values.put(DatabaseHelper.KEY_WINE_BOTTLE_COMMENT,
-                wineBottle.getComment());
+        values.put(DatabaseHelper.KEY_WINE_BOTTLE_COMMENT,wineBottle.getComment());
     	
-    	// updating row NOT SURE here void method cannot return a value should i take out the return?
+    	// updating row (NOT SURE here void method cannot return a value should i take out the return?)
     	return db.update(DatabaseHelper.TABLE_WINE_BOTTLE, values, DatabaseHelper.KEY_WINE_BOTTLE_ID + " = ?",
     			new String[] { String.valueOf(wineBottle.getId()) });
     }
@@ -119,8 +120,10 @@ public class WineBottleDAO {
     // deleting single contact
     public void deleteWineBottle(WineBottle wineBottle) {
         SQLiteDatabase db = databaseHelper.getReadableDatabase();
+        
+        // deleting row
         db.delete(DatabaseHelper.TABLE_WINE_BOTTLE, DatabaseHelper.KEY_WINE_BOTTLE_ID + " = ?",
         		new String[] { String.valueOf(wineBottle.getId()) });
-        db.close();
+        db.close(); // closing database connection
     }
 }

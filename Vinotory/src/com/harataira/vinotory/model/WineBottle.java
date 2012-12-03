@@ -10,6 +10,7 @@ public class WineBottle {
 	private int year;
 	// TODO: Make this an enum?
 	private String type;
+	private int quantity;
 	private String comment;
 	// TODO: How do we add a photo? What type is it? Learn more
 	// about android camera integration
@@ -17,11 +18,12 @@ public class WineBottle {
 	public WineBottle() {
 	}
 
-	public WineBottle(int id, String vineyard, int year, String type, String comment) {
+	public WineBottle(int id, String vineyard, int year, String type, int quantity, String comment) {
 		this.id = id;
 		this.vineyard = vineyard;
 		this.year = year;
 		this.type = type;
+		this.quantity = quantity;
 		this.comment = comment;
 	}
 
@@ -55,6 +57,14 @@ public class WineBottle {
 
 	public void setType(String type) {
 		this.type = type;
+	}
+	
+	public int getQuantity() {
+		return quantity;
+	}
+	
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 
 	public String getComment() {

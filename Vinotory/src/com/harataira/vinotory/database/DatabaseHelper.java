@@ -19,6 +19,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String KEY_WINE_BOTTLE_VINEYARD = "VINEYARD";
     public static final String KEY_WINE_BOTTLE_YEAR = "YEAR";
     public static final String KEY_WINE_BOTTLE_TYPE = "TYPE";
+    public static final String KEY_WINE_BOTTLE_QUANTITY = "QUANTITY";
     public static final String KEY_WINE_BOTTLE_COMMENT = "COMMENT";
 
     public DatabaseHelper(Context context) {
@@ -30,8 +31,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String CREATE_WINE_BOTTLE_TABLE = "CREATE TABLE " + TABLE_WINE_BOTTLE
                 + "(" + KEY_WINE_BOTTLE_ID + " INTEGER PRIMARY KEY,"
-                + KEY_WINE_BOTTLE_VINEYARD + " TEXT," + KEY_WINE_BOTTLE_YEAR
-                + " INTEGER," + KEY_WINE_BOTTLE_TYPE + " TEXT,"
+                + KEY_WINE_BOTTLE_VINEYARD + " TEXT," 
+                + KEY_WINE_BOTTLE_YEAR + " INTEGER," 
+                + KEY_WINE_BOTTLE_TYPE + " TEXT,"
+                + KEY_WINE_BOTTLE_QUANTITY + " INTEGER,"
                 + KEY_WINE_BOTTLE_COMMENT + " TEXT" + ")";
         db.execSQL(CREATE_WINE_BOTTLE_TABLE);
     }
