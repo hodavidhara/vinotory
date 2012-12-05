@@ -3,12 +3,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity" >
-
-    <TextView
+    
+    <Button
+        android:id="@+id/inventoryButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="@string/app_name" />
+        android:onClick="startInventoryActivity"
+        android:text="@string/main_inventory" />
+    
+    <Button
+        android:id="@+id/addBottleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/inventoryButton"
+        android:layout_centerHorizontal="true"
+        android:onClick="startAddBottleActivity"
+        android:text="@string/main_add_bottle" />
 
 </RelativeLayout>
