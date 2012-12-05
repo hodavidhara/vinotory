@@ -2,7 +2,10 @@
 <resources>
 
     <string name="app_name">Vinotory</string>
+    
+    <!-- Menu Strings -->
     <string name="menu_settings">Settings</string>
+    <string name="menu_empty_db">Empty the Database</string>
     
     <!-- Main Activity Strings -->
     <string name="main_add_bottle">Add a Bottle</string>

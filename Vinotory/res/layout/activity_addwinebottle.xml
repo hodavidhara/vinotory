@@ -11,7 +11,7 @@
         android:layout_above="@+id/addCancelButton"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:onClick="startInventoryActivity"
+        android:onClick="addWineBottleToDatabase"
         android:text="@string/add_create" />
 
     <Button

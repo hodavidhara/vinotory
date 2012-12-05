@@ -19,13 +19,21 @@ public class WineBottle {
 	}
 
 	public WineBottle(int id, String vineyard, int year, String type, int quantity, String comment) {
-		this.id = id;
+	    this.id = id;
 		this.vineyard = vineyard;
 		this.year = year;
 		this.type = type;
 		this.quantity = quantity;
 		this.comment = comment;
 	}
+	
+	public WineBottle(String vineyard, int year, String type, int quantity, String comment) {
+        this.vineyard = vineyard;
+        this.year = year;
+        this.type = type;
+        this.quantity = quantity;
+        this.comment = comment;
+    }
 
 	public int getId() {
 		return id;
@@ -118,4 +126,11 @@ public class WineBottle {
 			return false;
 		return true;
 	}
+
+    @Override
+    public String toString() {
+        return "WineBottle [id=" + id + ", vineyard=" + vineyard + ", year="
+                + year + ", type=" + type + ", quantity=" + quantity
+                + ", comment=" + comment + "]";
+    }
 }
