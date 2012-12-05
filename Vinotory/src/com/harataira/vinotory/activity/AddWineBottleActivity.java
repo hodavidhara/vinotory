@@ -11,7 +11,7 @@ public class AddWineBottleActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_AddWineBottle);
+        setContentView(R.layout.activity_addwinebottle);
     }
 
 }

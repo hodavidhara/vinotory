@@ -5,20 +5,21 @@
     tools:context=".AddWineBottleActivity" >
     
     <Button
-        android:id="@+id/inventoryButton"
+        android:id="@+id/createButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/addCancelButton"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:onClick="startInventoryActivity"
         android:text="@string/add_create" />
-    
+
     <Button
-        android:id="@+id/addBottleButton"
+        android:id="@+id/addCancelButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/inventoryButton"
         android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:onClick="startAddBottleActivity"
         android:text="@string/add_cancel" />
 

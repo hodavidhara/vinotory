@@ -10,4 +10,6 @@
 	
     <!-- Add Wine Bottle Strings -->
 	<string name="add_create">Create</string>
+	<string name="add_cancel">Cancel</string>
+	   
 </resources>
