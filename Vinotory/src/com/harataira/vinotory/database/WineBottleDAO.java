@@ -35,8 +35,7 @@ public class WineBottleDAO {
         values.put(DatabaseHelper.KEY_WINE_BOTTLE_YEAR, wineBottle.getYear());
         values.put(DatabaseHelper.KEY_WINE_BOTTLE_TYPE, wineBottle.getType());
         values.put(DatabaseHelper.KEY_WINE_BOTTLE_QUANTITY, wineBottle.getQuantity());
-        values.put(DatabaseHelper.KEY_WINE_BOTTLE_COMMENT,
-                wineBottle.getComment());
+        values.put(DatabaseHelper.KEY_WINE_BOTTLE_COMMENT, wineBottle.getComment());
 
         // Inserting Row
         db.insert(DatabaseHelper.TABLE_WINE_BOTTLE, null, values);

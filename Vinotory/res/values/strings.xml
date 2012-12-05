@@ -8,4 +8,6 @@
     <string name="main_add_bottle">Add a Bottle</string>
     <string name="main_inventory">Check your Vinotory</string>
 	
+    <!-- Add Wine Bottle Strings -->
+	<string name="add_create">Create</string>
 </resources>
