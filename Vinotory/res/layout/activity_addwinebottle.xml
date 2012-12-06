@@ -23,7 +23,7 @@
         android:layout_alignBottom="@+id/addCancelButton"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="69dp"
-        android:onClick="startInventoryActivity"
+        android:onClick="addWineBottleToDatabase"
         android:text="@string/add_create" />
 
 </RelativeLayout>

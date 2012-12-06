@@ -5,5 +5,12 @@
         android:orderInCategory="100"
         android:showAsAction="never"
         android:title="@string/menu_settings"/>
+    
+    <!-- TODO: THIS ITEM SHOULD BE REMOVED FOR PRODUCTION! -->
+    <item
+        android:id="@+id/menu_empty_db"
+        android:orderInCategory="1"
+        android:showAsAction="never"
+        android:title="@string/menu_empty_db"/>
 
 </menu>

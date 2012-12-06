@@ -15,7 +15,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String TABLE_WINE_BOTTLE = "WINE_BOTTLE";
 
     // Wine Bottle Table Columns
-    public static final String KEY_WINE_BOTTLE_ID = "ID";
+    public static final String KEY_WINE_BOTTLE_ID = "_id";
     public static final String KEY_WINE_BOTTLE_VINEYARD = "VINEYARD";
     public static final String KEY_WINE_BOTTLE_YEAR = "YEAR";
     public static final String KEY_WINE_BOTTLE_TYPE = "TYPE";
@@ -30,7 +30,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_WINE_BOTTLE_TABLE = "CREATE TABLE " + TABLE_WINE_BOTTLE
-                + "(" + KEY_WINE_BOTTLE_ID + " INTEGER PRIMARY KEY,"
+                + "( " + KEY_WINE_BOTTLE_ID + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,"
                 + KEY_WINE_BOTTLE_VINEYARD + " TEXT," 
                 + KEY_WINE_BOTTLE_YEAR + " INTEGER," 
                 + KEY_WINE_BOTTLE_TYPE + " TEXT,"

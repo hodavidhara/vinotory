@@ -75,8 +75,7 @@ public class WineBottleDAO {
     /**
      * Gets a row from the WINE_BOTTLE table by id.
      * 
-     * @param id
-     *            the id of the bottle we're looking for.
+     * @param id the id of the bottle we're looking for.
      * @return The wine bottle.
      */
     public WineBottle readWineBottle(int id) {
@@ -101,7 +100,13 @@ public class WineBottleDAO {
         return wineBottle;
     }
     
-    // updating single contact
+    /**
+     * Updates a wine bottle row in the database
+     * TODO: maybe we just want to make this void.
+     * 
+     * @param wineBottle the wine bottle object that needs to be updated in the database.
+     * @return the number of rows updated
+     */
     public int updateWineBottle(WineBottle wineBottle) {
     	SQLiteDatabase db = databaseHelper.getWritableDatabase();
     		
@@ -111,12 +116,16 @@ public class WineBottleDAO {
         values.put(DatabaseHelper.KEY_WINE_BOTTLE_TYPE, wineBottle.getType());
         values.put(DatabaseHelper.KEY_WINE_BOTTLE_COMMENT,wineBottle.getComment());
     	
-    	// updating row (NOT SURE here void method cannot return a value should i take out the return?)
+    	// updating row
     	return db.update(DatabaseHelper.TABLE_WINE_BOTTLE, values, DatabaseHelper.KEY_WINE_BOTTLE_ID + " = ?",
     			new String[] { String.valueOf(wineBottle.getId()) });
     }
 
-    // deleting single contact
+    /**
+     * Deletes a wine bottle row from the database
+     * 
+     * @param wineBottle the wine bottle to remove.
+     */
     public void deleteWineBottle(WineBottle wineBottle) {
         SQLiteDatabase db = databaseHelper.getReadableDatabase();
         
@@ -124,5 +133,16 @@ public class WineBottleDAO {
         db.delete(DatabaseHelper.TABLE_WINE_BOTTLE, DatabaseHelper.KEY_WINE_BOTTLE_ID + " = ?",
         		new String[] { String.valueOf(wineBottle.getId()) });
         db.close(); // closing database connection
+    }
+    
+    /**
+     * Deletes all rows from the table
+     */
+    public void deleteAllWineBottles() {
+        SQLiteDatabase db = databaseHelper.getReadableDatabase();
+        
+        // Delete all rows.
+        db.delete(DatabaseHelper.TABLE_WINE_BOTTLE, null, null);
+        db.close();
     }
 }
