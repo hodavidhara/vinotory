@@ -14,9 +14,10 @@
     <!-- Add Wine Bottle Strings -->
 	<string name="add_create">Create</string>
 	<string name="add_cancel">Cancel</string>
-	<string name="add_vineyard_label">Vineyard</string>
 	<string name="add_vineyard_input">Vineyard</string>
 	<string name="add_year_input">Year</string>
 	<string name="add_type_input">Type</string>
+	<string name="add_quantity_input">Quantity</string>
+	<string name="add_comment_input">Comment</string>
 	
 </resources>
