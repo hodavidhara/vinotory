@@ -47,12 +47,12 @@
          android:hint="@string/add_year_input" />
 
      <EditText
-         android:id="@+id/addYearInput"
+         android:id="@+id/addTypeInput"
          android:layout_width="fill_parent"
          android:layout_height="wrap_content"
          android:layout_alignParentLeft="true"
          android:layout_below="@+id/addYearInput"
-         android:layout_marginTop="85dp"
+         android:layout_marginTop="20dp"
          android:ems="10"
          android:hint="@string/add_type_input" />
 
