@@ -8,7 +8,7 @@ import android.view.MenuItem;
 import com.harataira.vinotory.R;
 import com.harataira.vinotory.database.WineBottleDAO;
 
-public abstract class GeneralOptionsMenuActivity extends Activity {
+public abstract class GeneralMenuActivity extends Activity {
 
     protected WineBottleDAO wineBottleDAO;
     

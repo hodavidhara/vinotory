@@ -6,7 +6,7 @@ import android.view.View;
 
 import com.harataira.vinotory.R;
 
-public class MainActivity extends GeneralOptionsMenuActivity {
+public class MainActivity extends GeneralMenuActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

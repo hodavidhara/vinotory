@@ -9,7 +9,7 @@ import android.view.View;
 import com.harataira.vinotory.R;
 import com.harataira.vinotory.model.WineBottle;
 
-public class AddWineBottleActivity extends GeneralOptionsMenuActivity {
+public class AddWineBottleActivity extends GeneralMenuActivity {
     
     
     @Override
