@@ -26,7 +26,7 @@ public class WineBottleDAO {
      * 
      * @param wineBottle
      */
-    public void createWineBottle(WineBottle wineBottle) {
+    public long createWineBottle(WineBottle wineBottle) {
         SQLiteDatabase db = databaseHelper.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -38,8 +38,9 @@ public class WineBottleDAO {
         values.put(DatabaseHelper.KEY_WINE_BOTTLE_COMMENT, wineBottle.getComment());
 
         // Inserting Row
-        db.insert(DatabaseHelper.TABLE_WINE_BOTTLE, null, values);
+        long returnLong = db.insert(DatabaseHelper.TABLE_WINE_BOTTLE, null, values);
         db.close(); // Closing database connection
+        return returnLong;
     }
 
     /**
@@ -59,16 +60,20 @@ public class WineBottleDAO {
         // looping through all rows and adding to list
         if (cursor.moveToFirst()) {
             do {
-                WineBottle wineBottle = new WineBottle(Integer.parseInt(cursor
-                        .getString(0)), cursor.getString(1), Integer.parseInt(cursor
-                        .getString(2)), cursor.getString(3), Integer.parseInt(cursor
-                        .getString(4)), cursor.getString(5));
+                WineBottle wineBottle = new WineBottle(
+                        Integer.parseInt(cursor.getString(0)), // id
+                        cursor.getString(1), // Vineyard
+                        Integer.parseInt(cursor.getString(2)), // Year
+                        cursor.getString(3), // Type
+                        Integer.parseInt(cursor.getString(4)), // Quantity
+                        cursor.getString(5)); // Comment
                 // Adding contact to list
                 wineBottleList.add(wineBottle);
             } while (cursor.moveToNext());
         }
      
         // return contact list
+        db.close();
         return wineBottleList;
     }
     
@@ -78,7 +83,7 @@ public class WineBottleDAO {
      * @param id the id of the bottle we're looking for.
      * @return The wine bottle.
      */
-    public WineBottle readWineBottle(int id) {
+    public WineBottle readWineBottle(long id) {
         SQLiteDatabase db = databaseHelper.getReadableDatabase();
 
         Cursor cursor = db.query(DatabaseHelper.TABLE_WINE_BOTTLE,
@@ -86,17 +91,22 @@ public class WineBottleDAO {
                         DatabaseHelper.KEY_WINE_BOTTLE_VINEYARD,
                         DatabaseHelper.KEY_WINE_BOTTLE_YEAR,
                         DatabaseHelper.KEY_WINE_BOTTLE_TYPE,
+                        DatabaseHelper.KEY_WINE_BOTTLE_QUANTITY,
                         DatabaseHelper.KEY_WINE_BOTTLE_COMMENT },
                 DatabaseHelper.KEY_WINE_BOTTLE_ID + "=?",
                 new String[] { String.valueOf(id) }, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
 
-        WineBottle wineBottle = new WineBottle(Integer.parseInt(cursor
-                .getString(0)), cursor.getString(1), Integer.parseInt(cursor
-                .getString(2)), cursor.getString(3), Integer.parseInt(cursor
-                .getString(4)), cursor.getString(5));
+        WineBottle wineBottle = new WineBottle(
+                Integer.parseInt(cursor.getString(0)), // id
+                cursor.getString(1), // Vineyard
+                Integer.parseInt(cursor.getString(2)), // Year
+                cursor.getString(3), // Type
+                Integer.parseInt(cursor.getString(4)), // Quantity
+                cursor.getString(5)); // Comment
         // return contact
+        db.close();
         return wineBottle;
     }
     
@@ -116,9 +126,12 @@ public class WineBottleDAO {
         values.put(DatabaseHelper.KEY_WINE_BOTTLE_TYPE, wineBottle.getType());
         values.put(DatabaseHelper.KEY_WINE_BOTTLE_COMMENT,wineBottle.getComment());
     	
+        int returnInt = db.update(DatabaseHelper.TABLE_WINE_BOTTLE, values, DatabaseHelper.KEY_WINE_BOTTLE_ID + " = ?",
+                new String[] { String.valueOf(wineBottle.getId()) });
+        
+        db.close();
     	// updating row
-    	return db.update(DatabaseHelper.TABLE_WINE_BOTTLE, values, DatabaseHelper.KEY_WINE_BOTTLE_ID + " = ?",
-    			new String[] { String.valueOf(wineBottle.getId()) });
+    	return returnInt;
     }
 
     /**
