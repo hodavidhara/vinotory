@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AddWineBottleActivity" >
-
+    
     <Button
         android:id="@+id/addCancelButton"
         android:layout_width="wrap_content"
@@ -25,5 +25,35 @@
         android:layout_marginLeft="69dp"
         android:onClick="addWineBottleToDatabase"
         android:text="@string/add_create" />
+
+    <EditText
+        android:id="@+id/addVineyardInput"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="27dp"
+        android:ems="10"
+        android:hint="@string/add_vineyard_input" />
+
+     <EditText
+         android:id="@+id/addYearInput"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:layout_alignParentLeft="true"
+         android:layout_below="@+id/addVineyardInput"
+         android:layout_marginTop="14dp"
+         android:ems="10"
+         android:hint="@string/add_year_input" />
+
+     <EditText
+         android:id="@+id/addYearInput"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:layout_alignParentLeft="true"
+         android:layout_below="@+id/addYearInput"
+         android:layout_marginTop="85dp"
+         android:ems="10"
+         android:hint="@string/add_type_input" />
 
 </RelativeLayout>
