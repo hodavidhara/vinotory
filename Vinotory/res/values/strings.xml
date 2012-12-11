@@ -20,4 +20,9 @@
 	<string name="add_quantity_input">Quantity</string>
 	<string name="add_comment_input">Comment</string>
 	
+	<!-- List Item Views -->
+	<string name="listItemVineyard">Vineyard</string>
+	<string name="listItemType">Type</string>
+	<string name="listItemYear">Year</string>
+	
 </resources>
