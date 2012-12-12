@@ -18,4 +18,9 @@ public class MainActivity extends GeneralMenuActivity {
 	    Intent intent = new Intent(this, AddWineBottleActivity.class);
 	    startActivity(intent);
 	}
+	
+	public void startInventoryActivity(View view) {
+        Intent intent = new Intent(this, InventoryActivity.class);
+        startActivity(intent);
+    }
 }
