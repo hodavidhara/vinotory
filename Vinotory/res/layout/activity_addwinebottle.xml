@@ -44,6 +44,8 @@
          android:layout_below="@+id/addVineyardInput"
          android:layout_marginTop="20dp"
          android:ems="10"
+         android:inputType="number"
+         android:digits="0123456789"
          android:hint="@string/add_year_input" />
     
      <EditText
@@ -54,8 +56,6 @@
          android:layout_below="@+id/addYearInput"
          android:layout_marginTop="20dp"
          android:ems="10"
-         android:inputType="number"
-         android:digits="0123456789"
          android:hint="@string/add_type_input" />
 
      <EditText

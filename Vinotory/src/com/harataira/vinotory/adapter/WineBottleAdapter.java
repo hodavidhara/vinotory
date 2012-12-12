@@ -41,7 +41,7 @@ public class WineBottleAdapter extends ArrayAdapter<WineBottle> {
         // Set all the text views accordingly
         vineyardTextView.setText(currentBottle.getVineyard());
         typeTextView.setText(currentBottle.getType());
-        yearTextView.setText(currentBottle.getYear());
+        yearTextView.setText(Integer.toString(currentBottle.getYear()));
         
         return rowView;
     }
