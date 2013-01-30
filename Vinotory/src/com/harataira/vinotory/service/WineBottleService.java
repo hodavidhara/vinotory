@@ -25,7 +25,7 @@ public class WineBottleService {
      * @return The wine bottle with the matching id.
      */
     public WineBottle getWineBottle(String id) {
-        return wineBottleDAO.readWineBottle(Long.parseLong(id));
+        return wineBottleDAO.readWineBottleById(Long.parseLong(id));
     }
     
     /**
@@ -37,6 +37,20 @@ public class WineBottleService {
      * @param wineBottle The wine bottle object to be added to the inventory.
      */
     public void addWineBottle(WineBottle wineBottle) {
+    	String vineyard = wineBottle.getVineyard();
+    	int year = wineBottle.getYear();
+    	String type = wineBottle.getType();
+    	
+    	WineBottle wineBottleFromDatabase = wineBottleDAO.readWineBottleByTraits(vineyard, year, type);
+    	if (wineBottleFromDatabase == null)
+    		{
+    			wineBottleDAO.createWineBottle(wineBottle);
+    		}
+    	else 
+    		{
+    			int totalQuantity = wineBottle.getQuantity() + wineBottleFromDatabase.getQuantity();
+    			wineBottleFromDatabase.setQuantity(totalQuantity);
+    		}
         // TODO: do a query on the DB to see if a bottle of this type already exists, if it does
         // TODO: add the two amounts together and update the row in the DB, if it doesn't, then just add the bottle.
         wineBottleDAO.createWineBottle(wineBottle);
