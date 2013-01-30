@@ -41,19 +41,21 @@ public class WineBottleService {
     	int year = wineBottle.getYear();
     	String type = wineBottle.getType();
     	
+    	// Search for a wine bottle in the database with matching types
     	WineBottle wineBottleFromDatabase = wineBottleDAO.readWineBottleByTraits(vineyard, year, type);
-    	if (wineBottleFromDatabase == null)
-    		{
-    			wineBottleDAO.createWineBottle(wineBottle);
-    		}
-    	else 
-    		{
-    			int totalQuantity = wineBottle.getQuantity() + wineBottleFromDatabase.getQuantity();
-    			wineBottleFromDatabase.setQuantity(totalQuantity);
-    		}
-        // TODO: do a query on the DB to see if a bottle of this type already exists, if it does
-        // TODO: add the two amounts together and update the row in the DB, if it doesn't, then just add the bottle.
-        wineBottleDAO.createWineBottle(wineBottle);
+    	
+    	if (wineBottleFromDatabase == null) {
+    	    // If no wine bottle exists, just create it
+    	    wineBottleDAO.createWineBottle(wineBottle);
+		} else {
+		    
+		    // If a wine bottle does exist, add the quantities and update the row in the DB.
+			int totalQuantity = wineBottle.getQuantity() + wineBottleFromDatabase.getQuantity();
+    		wineBottleFromDatabase.setQuantity(totalQuantity);
+    		
+    		// TODO: We probably want some way to track the comments if the user adds another comment. 
+    		wineBottleDAO.updateWineBottle(wineBottleFromDatabase);
+		}
     }
     
     /**

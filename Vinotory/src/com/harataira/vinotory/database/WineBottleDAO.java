@@ -93,10 +93,12 @@ public class WineBottleDAO {
                         DatabaseHelper.KEY_WINE_BOTTLE_TYPE,
                         DatabaseHelper.KEY_WINE_BOTTLE_QUANTITY,
                         DatabaseHelper.KEY_WINE_BOTTLE_COMMENT },
-                DatabaseHelper.KEY_WINE_BOTTLE_ID + "=?",
+                DatabaseHelper.KEY_WINE_BOTTLE_ID + " = ?",
                 new String[] { String.valueOf(id) }, null, null, null, null);
-        if (cursor != null)
+        
+        if (cursor != null) {
             cursor.moveToFirst();
+        }
 
         WineBottle wineBottle = new WineBottle(
                 Integer.parseInt(cursor.getString(0)), // id
@@ -105,20 +107,50 @@ public class WineBottleDAO {
                 cursor.getString(3), // Type
                 Integer.parseInt(cursor.getString(4)), // Quantity
                 cursor.getString(5)); // Comment
-        // return contact
+        // return wine bottle
         db.close();
         return wineBottle;
     }
     
     /**
-     * TODO
-     * @param vineyard
-     * @param year
-     * @param type
-     * @return
+     * Gets a row from the database that matches the given distinguishing traits.
+     * 
+     * @param Vineyard The vineyard of the wine.
+     * @param Year The year of the wine.
+     * @param Type The type of wine.
+     * @return The matching wine bottle, or null if no match.
      */
     public WineBottle readWineBottleByTraits(String vineyard, int year, String type) {
-        throw new UnsupportedOperationException("Write this query!");
+        SQLiteDatabase db = databaseHelper.getReadableDatabase();
+        
+        String queryString = DatabaseHelper.KEY_WINE_BOTTLE_VINEYARD + " = ? and " +
+                DatabaseHelper.KEY_WINE_BOTTLE_YEAR + " = ? and " +
+                DatabaseHelper.KEY_WINE_BOTTLE_TYPE + " = ?";
+
+        Cursor cursor = db.query(DatabaseHelper.TABLE_WINE_BOTTLE,
+                new String[] { DatabaseHelper.KEY_WINE_BOTTLE_ID,
+                        DatabaseHelper.KEY_WINE_BOTTLE_VINEYARD,
+                        DatabaseHelper.KEY_WINE_BOTTLE_YEAR,
+                        DatabaseHelper.KEY_WINE_BOTTLE_TYPE,
+                        DatabaseHelper.KEY_WINE_BOTTLE_QUANTITY,
+                        DatabaseHelper.KEY_WINE_BOTTLE_COMMENT },
+                queryString,
+                new String[] { vineyard, String.valueOf(year), type }, null, null, null, null);
+        
+        if (cursor != null) {
+            cursor.moveToFirst();
+        }
+
+        WineBottle wineBottle = new WineBottle(
+                Integer.parseInt(cursor.getString(0)), // id
+                cursor.getString(1), // Vineyard
+                Integer.parseInt(cursor.getString(2)), // Year
+                cursor.getString(3), // Type
+                Integer.parseInt(cursor.getString(4)), // Quantity
+                cursor.getString(5)); // Comment
+        // return wine bottle
+        db.close();
+        return wineBottle;
     }
     
     /**
