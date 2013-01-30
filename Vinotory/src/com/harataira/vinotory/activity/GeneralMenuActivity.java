@@ -6,16 +6,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.harataira.vinotory.R;
-import com.harataira.vinotory.database.WineBottleDAO;
+import com.harataira.vinotory.service.WineBottleService;
 
 public abstract class GeneralMenuActivity extends Activity {
 
-    protected WineBottleDAO wineBottleDAO;
+    protected WineBottleService wineBottleService;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        wineBottleDAO = new WineBottleDAO(this);
+        wineBottleService = new WineBottleService(this);
     }
 
     @Override
@@ -40,7 +40,7 @@ public abstract class GeneralMenuActivity extends Activity {
     
     private boolean emptyDatabase() {
         try {
-            wineBottleDAO.deleteAllWineBottles();
+            wineBottleService.deleteAllWineBottles();
             System.out.println("Success removing all wine bottles from the table!");
             return true;    
         } catch (Exception e) {

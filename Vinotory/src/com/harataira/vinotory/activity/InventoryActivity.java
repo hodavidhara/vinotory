@@ -10,20 +10,21 @@ import android.widget.ListView;
 import com.harataira.vinotory.adapter.WineBottleAdapter;
 import com.harataira.vinotory.database.WineBottleDAO;
 import com.harataira.vinotory.model.WineBottle;
+import com.harataira.vinotory.service.WineBottleService;
 
 public class InventoryActivity extends ListActivity {
     
-    private WineBottleDAO wineBottleDAO;
+    private WineBottleService wineBottleService;
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-        // Get the DAO
-        wineBottleDAO = new WineBottleDAO(this);
+        // Get the winebottle service
+        wineBottleService = new WineBottleService(this);
         
         // Get the list of wine bottles.
-        List<WineBottle> wineBottles = wineBottleDAO.readAllWineBottles();
+        List<WineBottle> wineBottles = wineBottleService.getAllWineBottles();
  
         setListAdapter(new WineBottleAdapter(this, wineBottles));
  

@@ -19,7 +19,6 @@ public class AddWineBottleActivity extends GeneralMenuActivity {
     }
     
     public void addWineBottleToDatabase(View view) {
-        // TODO: uncomment these and hook everything in to the view when Spencer is done.
         
         EditText vineyardInput = (EditText) findViewById(R.id.addVineyardInput);
         EditText yearInput = (EditText) findViewById(R.id.addYearInput);
@@ -35,7 +34,7 @@ public class AddWineBottleActivity extends GeneralMenuActivity {
         
         WineBottle wineBottle = new WineBottle(vineyard, year, type, quantity, comment);
         
-        wineBottleDAO.createWineBottle(wineBottle);
+        wineBottleService.addWineBottle(wineBottle);
     }
     
     public void finishAddWineBottleActivity(View view) {
