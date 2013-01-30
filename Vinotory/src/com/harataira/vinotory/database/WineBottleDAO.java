@@ -83,7 +83,7 @@ public class WineBottleDAO {
      * @param id the id of the bottle we're looking for.
      * @return The wine bottle.
      */
-    public WineBottle readWineBottle(long id) {
+    public WineBottle readWineBottleById(long id) {
         SQLiteDatabase db = databaseHelper.getReadableDatabase();
 
         Cursor cursor = db.query(DatabaseHelper.TABLE_WINE_BOTTLE,
@@ -108,6 +108,17 @@ public class WineBottleDAO {
         // return contact
         db.close();
         return wineBottle;
+    }
+    
+    /**
+     * TODO
+     * @param vineyard
+     * @param year
+     * @param type
+     * @return
+     */
+    public WineBottle readWineBottleByTraits(String vineyard, int year, String type) {
+        throw new UnsupportedOperationException("Write this query!");
     }
     
     /**
