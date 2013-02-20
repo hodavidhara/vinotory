@@ -25,4 +25,10 @@
 	<string name="listItemType">Type</string>
 	<string name="listItemYear">Year</string>
 	
+	<!-- Selected Bottle Strings -->
+	<string name="selected_vineyard_label">Vineyard</string>
+	<string name="selected_year_label">Year</string>
+	<string name="selected_type_label">Type</string>
+	<string name="selected_quantity_label">Quantity</string>
+	<string name="selected_comment_label">Comment</string> 
 </resources>
